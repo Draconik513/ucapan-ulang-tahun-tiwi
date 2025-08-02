@@ -1,0 +1,144 @@
+import { motion } from 'framer-motion'
+import { useState } from 'react'
+import vidioBunga from '../assets/videos/vidioBungadudu.mp4'
+import fotoKenangan from '../assets/images/couple.jpg'
+
+const Memories = () => {
+  const [flowerBloom, setFlowerBloom] = useState(false)
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-pink-50 to-rose-50 p-4 flex flex-col items-center justify-center">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-5xl w-full text-center"
+      >
+        <h1 className="text-4xl font-bold text-pink-600 mb-8">
+          Kenangan Indah Kita
+        </h1>
+
+        <motion.div whileHover={{ scale: 1.02 }} className="mb-8">
+          <img
+            src={fotoKenangan}
+            alt="Kita Berdua"
+            className="w-full max-w-md mx-auto rounded-xl shadow-2xl border-4 border-white"
+          />
+        </motion.div>
+
+
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="bg-white bg-opacity-80 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-8"
+        >
+          <h2 className="text-2xl font-semibold text-rose-600 mb-4">
+            Permintaan Maafku di Hari Ulang Tahunmu
+          </h2>
+
+          <div className="text-left text-pink-800 space-y-4 leading-relaxed">
+            <p>
+              💌 <strong>Maaf ya, Sayang...</strong>
+            </p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            >
+              Maaf kalau selama ini aku pernah cuek 😞, terlalu sibuk 😔, atau kurang peka sama perasaanmu 😢. Maaf kalau kadang aku bikin kamu kecewa, salah paham, atau merasa sendiri 😓. Aku gak pernah berniat nyakitin kamu 🥺. Semua itu karena aku manusia biasa yang masih belajar mencintaimu dengan lebih baik 🤍.
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 1.2 }}
+            >
+              Terima kasih sudah sabar, sudah tetap di sini 🫶. Aku akan terus belajar jadi lebih baik lagi... untuk kamu 💗
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 1.8 }}
+            >
+              🙏🏻 Maaf ya, dan makasih karena kamu tetap percaya sama aku.
+            </motion.p>
+          </div>
+        </motion.div>
+
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setFlowerBloom(!flowerBloom)}
+          className="bg-rose-500 text-white px-6 py-3 rounded-full shadow-lg mb-8"
+        >
+          {flowerBloom ? 'Tutup Bunga' : 'Buka Bunga Cinta'}
+        </motion.button>
+
+        {flowerBloom && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="relative flex flex-col md:flex-row items-center justify-center gap-6 mt-8"
+          >
+            {/* Romantic Video Bubble - Kiri */}
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.5, type: 'spring', stiffness: 100 }}
+              className="rounded-xl overflow-hidden shadow-xl border-4 border-rose-200"
+            >
+              <video autoPlay loop muted className="w-72 h-72 object-cover">
+                <source src={vidioBunga} />
+                Your browser does not support the video tag.
+              </video>
+            </motion.div>
+
+            {/* Realistic Blooming Flower - Kanan */}
+            <motion.div
+              initial={{ y: 200, scale: 0 }}
+              animate={{ y: 0, scale: 1 }}
+              transition={{ duration: 1.5, ease: 'easeOut' }}
+              className="relative w-64 h-64"
+            >
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-48 bg-green-600 rounded-full"></div>
+              {[...Array(5)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-32 h-32 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full opacity-90"
+                  style={{
+                    top: `${Math.cos((i / 5) * 2 * Math.PI) * 40 + 40}px`,
+                    left: `${Math.sin((i / 5) * 2 * Math.PI) * 40 + 40}px`,
+                  }}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.5 + i * 0.2 }}
+                />
+              ))}
+              <motion.div
+                className="absolute w-14 h-14 bg-yellow-300 rounded-full left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 1.5 }}
+              />
+            </motion.div>
+          </motion.div>
+        )}
+
+        {/* Tambahan Teks di Bawah */}
+        {flowerBloom && (
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 2.2 }}
+            className="text-center text-rose-500 mt-6 italic text-lg"
+          >
+            🌸 Bunga ini sebagai hadiah dari permintaan maafku, sayang... Tolong diterima ya 🥺❤️
+          </motion.p>
+        )}
+      </motion.div>
+    </div>
+  )
+}
+
+export default Memories
