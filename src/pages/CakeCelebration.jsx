@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Confetti from 'react-confetti'
 import useWindowSize from 'react-use/lib/useWindowSize'
+import happybirthday from '../assets/audio/happybirthday.mp3'
 
 const CakeCelebration = () => {
   const { width, height } = useWindowSize()
@@ -208,7 +209,7 @@ const CakeCelebration = () => {
 
         <audio 
           ref={birthdaySongRef}
-          src="/audio/happy-birthday.mp3" 
+          src={happybirthday}
           preload="auto"
         ></audio>
       </motion.div>
