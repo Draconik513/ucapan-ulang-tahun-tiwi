@@ -19,7 +19,7 @@ const HomePage = ({ isIOS }) => {
           transition={{ delay: 0.5 }}
           className="mb-8"
         >
-          <p className="text-lg text-pink-500 pt-4">Untuk yang tersayang</p>
+          <p className="text-lg text-pink-600 pt-4">Untuk yang tersayang</p>
           <h1 className="text-4xl font-extrabold bg-gradient-to-r from-pink-600 via-pink-400 to-purple-500 text-transparent bg-clip-text drop-shadow-md">
             Tri Pratiwi
           </h1>
@@ -46,6 +46,7 @@ const HomePage = ({ isIOS }) => {
               webkit-playsinline="true"
               x-webkit-airplay="allow"
               className="w-full h-full object-cover"
+              style={{ transform: 'translateZ(0)' }}
             />
           </div>
         </motion.div>
@@ -56,12 +57,12 @@ const HomePage = ({ isIOS }) => {
           transition={{ delay: 1 }}
           className="space-y-6"
         >
-          <h2 className="text-3xl font-bold text-pink-600 neon-text">
+          <h2 className="text-3xl font-bold text-pink-600">
             Selamat Ulang Tahun Sayang!
           </h2>
-          <p className="text-xl text-pink-500">🎉 10 Agustus 2025 🎉</p>
+          <p className="text-xl text-pink-600">🎉 10 Agustus 2025 🎉</p>
 
-          <div className="mt-8 p-4 bg-pink-50 rounded-lg max-w-md mx-auto">
+          <div className="mt-8 p-4 bg-white/80 backdrop-blur-sm rounded-lg max-w-md mx-auto border border-pink-200">
             <p className="text-pink-800 italic">
               "Untuk pacarku yang tercinta, di hari spesialmu ini aku ingin
               mengucapkan... Terima kasih telah menjadi cahaya dalam hidupku.
@@ -83,7 +84,11 @@ const HomePage = ({ isIOS }) => {
             whileHover={{ scale: isIOS ? 1 : 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => navigate("/gift")}
-            className="relative overflow-hidden bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full shadow-lg text-xl font-bold"
+            className="relative overflow-hidden bg-gradient-to-r from-pink-600 to-purple-700 text-white px-8 py-4 rounded-full shadow-lg text-xl font-bold border-2 border-white/50"
+            style={{ 
+              WebkitTapHighlightColor: 'transparent',
+              WebkitBackfaceVisibility: 'hidden'
+            }}
           >
             <span className="button-text flex items-center">
               <span className="mr-2">🎁</span>
