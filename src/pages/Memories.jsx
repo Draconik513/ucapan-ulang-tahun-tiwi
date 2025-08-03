@@ -23,6 +23,7 @@ const Memories = ({ isIOS }) => {
             src={fotoKenangan}
             alt="Kita Berdua"
             className="w-full max-w-md mx-auto rounded-xl shadow-2xl border-4 border-white"
+            style={{ transform: 'translateZ(0)' }}
           />
         </motion.div>
 
@@ -30,7 +31,7 @@ const Memories = ({ isIOS }) => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="bg-white bg-opacity-80 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-8"
+          className="bg-white bg-opacity-90 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-8 border border-pink-100"
         >
           <h2 className="text-2xl font-semibold text-rose-600 mb-4">
             Permintaan Maafku di Hari Ulang Tahunmu
@@ -68,7 +69,8 @@ const Memories = ({ isIOS }) => {
           whileHover={{ scale: isIOS ? 1 : 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setFlowerBloom(!flowerBloom)}
-          className="relative overflow-hidden bg-rose-500 text-white px-6 py-3 rounded-full shadow-lg mb-8"
+          className="relative overflow-hidden bg-rose-600 text-white px-6 py-3 rounded-full shadow-lg mb-8 border border-white/30"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <span className="button-text">
             {flowerBloom ? 'Tutup Bunga' : 'Buka Bunga Cinta'}
@@ -80,8 +82,11 @@ const Memories = ({ isIOS }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="relative flex flex-col md:flex-row items-center justify-center gap-6 mt-8 motion-div-fix"
-            style={{ WebkitTransform: 'translate3d(0,0,0)' }}
+            className="relative flex flex-col md:flex-row items-center justify-center gap-6 mt-8"
+            style={{ 
+              WebkitTransform: 'translate3d(0,0,0)',
+              transformStyle: 'preserve-3d'
+            }}
           >
             {/* Romantic Video Bubble */}
             <motion.div
@@ -89,6 +94,7 @@ const Memories = ({ isIOS }) => {
               animate={{ scale: 1 }}
               transition={{ delay: 0.5, type: 'spring', stiffness: 100 }}
               className="rounded-xl overflow-hidden shadow-xl border-4 border-rose-200"
+              style={{ backfaceVisibility: 'hidden' }}
             >
               <video 
                 autoPlay 
@@ -108,16 +114,24 @@ const Memories = ({ isIOS }) => {
               initial={{ y: 200, scale: 0 }}
               animate={{ y: 0, scale: 1 }}
               transition={{ duration: 1.5, ease: 'easeOut' }}
-              className="relative w-64 h-64 motion-div-fix"
+              className="relative w-64 h-64 overflow-visible"
+              style={{ 
+                transformStyle: 'preserve-3d',
+                WebkitTransformStyle: 'preserve-3d'
+              }}
             >
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-48 bg-green-600 rounded-full"></div>
               {[...Array(5)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-32 h-32 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full opacity-90"
+                  className="absolute w-32 h-32 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full"
                   style={{
                     top: `${Math.cos((i / 5) * 2 * Math.PI) * 40 + 40}px`,
                     left: `${Math.sin((i / 5) * 2 * Math.PI) * 40 + 40}px`,
+                    transform: 'translateZ(0)',
+                    willChange: 'transform, opacity',
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden'
                   }}
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
@@ -129,6 +143,10 @@ const Memories = ({ isIOS }) => {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 1.5 }}
+                style={{ 
+                  transform: 'translateZ(0)',
+                  backfaceVisibility: 'hidden'
+                }}
               />
             </motion.div>
           </motion.div>
@@ -139,7 +157,7 @@ const Memories = ({ isIOS }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.2 }}
-            className="text-center text-rose-500 mt-6 italic text-lg"
+            className="text-center text-rose-600 mt-6 italic text-lg"
           >
             🌸 Bunga ini sebagai hadiah dari permintaan maafku, sayang... Tolong diterima ya 🥺❤️
           </motion.p>
