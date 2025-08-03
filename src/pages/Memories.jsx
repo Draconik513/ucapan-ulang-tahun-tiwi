@@ -3,7 +3,7 @@ import { useState } from 'react'
 import vidioBunga from '../assets/videos/vidioBungadudu.mp4'
 import fotoKenangan from '../assets/images/couple.jpg'
 
-const Memories = () => {
+const Memories = ({ isIOS }) => {
   const [flowerBloom, setFlowerBloom] = useState(false)
 
   return (
@@ -18,14 +18,13 @@ const Memories = () => {
           Kenangan Indah Kita
         </h1>
 
-        <motion.div whileHover={{ scale: 1.02 }} className="mb-8">
+        <motion.div whileHover={{ scale: isIOS ? 1 : 1.02 }} className="mb-8">
           <img
             src={fotoKenangan}
             alt="Kita Berdua"
             className="w-full max-w-md mx-auto rounded-xl shadow-2xl border-4 border-white"
           />
         </motion.div>
-
 
         <motion.div
           initial={{ y: 50, opacity: 0 }}
@@ -66,12 +65,14 @@ const Memories = () => {
         </motion.div>
 
         <motion.button
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: isIOS ? 1 : 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setFlowerBloom(!flowerBloom)}
-          className="bg-rose-500 text-white px-6 py-3 rounded-full shadow-lg mb-8"
+          className="relative overflow-hidden bg-rose-500 text-white px-6 py-3 rounded-full shadow-lg mb-8"
         >
-          {flowerBloom ? 'Tutup Bunga' : 'Buka Bunga Cinta'}
+          <span className="button-text">
+            {flowerBloom ? 'Tutup Bunga' : 'Buka Bunga Cinta'}
+          </span>
         </motion.button>
 
         {flowerBloom && (
@@ -79,27 +80,35 @@ const Memories = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="relative flex flex-col md:flex-row items-center justify-center gap-6 mt-8"
+            className="relative flex flex-col md:flex-row items-center justify-center gap-6 mt-8 motion-div-fix"
+            style={{ WebkitTransform: 'translate3d(0,0,0)' }}
           >
-            {/* Romantic Video Bubble - Kiri */}
+            {/* Romantic Video Bubble */}
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 0.5, type: 'spring', stiffness: 100 }}
               className="rounded-xl overflow-hidden shadow-xl border-4 border-rose-200"
             >
-              <video autoPlay loop muted className="w-72 h-72 object-cover">
-                <source src={vidioBunga} />
-                Your browser does not support the video tag.
+              <video 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+                webkit-playsinline="true"
+                x-webkit-airplay="allow"
+                className="w-72 h-72 object-cover"
+              >
+                <source src={vidioBunga} type="video/mp4" />
               </video>
             </motion.div>
 
-            {/* Realistic Blooming Flower - Kanan */}
+            {/* Realistic Blooming Flower */}
             <motion.div
               initial={{ y: 200, scale: 0 }}
               animate={{ y: 0, scale: 1 }}
               transition={{ duration: 1.5, ease: 'easeOut' }}
-              className="relative w-64 h-64"
+              className="relative w-64 h-64 motion-div-fix"
             >
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-48 bg-green-600 rounded-full"></div>
               {[...Array(5)].map((_, i) => (
@@ -125,7 +134,6 @@ const Memories = () => {
           </motion.div>
         )}
 
-        {/* Tambahan Teks di Bawah */}
         {flowerBloom && (
           <motion.p
             initial={{ opacity: 0, y: 10 }}

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-const ReplyPage = () => {
+const ReplyPage = ({ isIOS }) => {
   const [messages, setMessages] = useState([]);
   const navigate = useNavigate();
 
@@ -20,11 +20,14 @@ const ReplyPage = () => {
       >
         <motion.button
           onClick={() => navigate(-1)}
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: isIOS ? 1 : 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="mb-6 bg-white text-pink-600 px-4 py-2 rounded-full shadow-md flex items-center"
+          className="relative overflow-hidden mb-6 bg-white text-pink-600 px-4 py-2 rounded-full shadow-md flex items-center"
         >
-          ← Kembali
+          <span className="button-text flex items-center">
+            <span className="mr-2">←</span>
+            Kembali
+          </span>
         </motion.button>
 
         <div className="bg-white rounded-xl shadow-lg p-6">

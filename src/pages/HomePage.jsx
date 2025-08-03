@@ -1,12 +1,11 @@
-import { motion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
-import ConfettiBackground from '../components/ConfettiBackground'
-import FloatingHearts from '../components/FloatingHearts'
-import heartVideo from '../assets/videos/heart-animation.mp4' // contoh
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import ConfettiBackground from "../components/ConfettiBackground";
+import FloatingHearts from "../components/FloatingHearts";
+import heartVideo from "../assets/videos/heart-animation.mp4";
 
-
-const HomePage = () => {
-  const navigate = useNavigate()
+const HomePage = ({ isIOS }) => {
+  const navigate = useNavigate();
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
@@ -21,7 +20,7 @@ const HomePage = () => {
           className="mb-8"
         >
           <p className="text-lg text-pink-500 pt-4">Untuk yang tersayang</p>
-          <h1 className="text-4xl font-extrabold bg-gradient-to-r from-pink-500 to-purple-600 text-transparent bg-clip-text">
+          <h1 className="text-4xl font-extrabold bg-gradient-to-r from-pink-600 via-pink-400 to-purple-500 text-transparent bg-clip-text drop-shadow-md">
             Tri Pratiwi
           </h1>
         </motion.div>
@@ -33,7 +32,7 @@ const HomePage = () => {
           transition={{
             duration: 2,
             repeat: Infinity,
-            repeatType: 'mirror',
+            repeatType: "mirror",
           }}
           className="mb-8"
         >
@@ -44,6 +43,8 @@ const HomePage = () => {
               loop
               muted
               playsInline
+              webkit-playsinline="true"
+              x-webkit-airplay="allow"
               className="w-full h-full object-cover"
             />
           </div>
@@ -62,10 +63,13 @@ const HomePage = () => {
 
           <div className="mt-8 p-4 bg-pink-50 rounded-lg max-w-md mx-auto">
             <p className="text-pink-800 italic">
-              "Untuk pacarku yang tercinta, di hari spesialmu ini aku ingin mengucapkan...
-              Terima kasih telah menjadi cahaya dalam hidupku. Setiap detik bersamamu adalah anugerah."
+              "Untuk pacarku yang tercinta, di hari spesialmu ini aku ingin
+              mengucapkan... Terima kasih telah menjadi cahaya dalam hidupku.
+              Setiap detik bersamamu adalah anugerah."
             </p>
-            <p className="mt-4 text-right text-pink-600 font-medium">- Nama Pacarmu</p>
+            <p className="mt-4 text-right text-pink-600 font-medium">
+              - Nama Pacarmu
+            </p>
           </div>
         </motion.div>
 
@@ -76,19 +80,21 @@ const HomePage = () => {
           className="mt-12"
         >
           <motion.button
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: isIOS ? 1 : 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={() => navigate('/gift')}
-            className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full shadow-lg text-xl font-bold flex items-center mx-auto"
+            onClick={() => navigate("/gift")}
+            className="relative overflow-hidden bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full shadow-lg text-xl font-bold"
           >
-            <span className="mr-2">🎁</span>
-            Buka Hadiah Spesial
-            <span className="ml-2">🎁</span>
+            <span className="button-text flex items-center">
+              <span className="mr-2">🎁</span>
+              Buka Hadiah Spesial
+              <span className="ml-2">🎁</span>
+            </span>
           </motion.button>
         </motion.div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

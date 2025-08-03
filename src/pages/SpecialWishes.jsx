@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import vidioWishes from '../assets/videos/Wishes.mp4'
 
-const SpecialWishes = () => {
+const SpecialWishes = ({ isIOS }) => {
   const [showHeart, setShowHeart] = useState(false)
 
   const wishes = `
@@ -37,15 +37,16 @@ Aku cinta kamu ❤️, dan akan selalu mencintaimu 💍.
             loop 
             muted 
             playsInline
+            webkit-playsinline="true"
+            x-webkit-airplay="allow"
             className="w-full max-w-md mx-auto rounded-lg shadow-xl"
           >
-            <source src={vidioWishes} />
-            Your browser does not support the video tag.
+            <source src={vidioWishes} type="video/mp4" />
           </video>
         </div>
 
         <motion.div
-          whileHover={{ scale: 1.01 }}
+          whileHover={{ scale: isIOS ? 1 : 1.01 }}
           className="bg-white bg-opacity-80 backdrop-blur-sm p-6 rounded-xl shadow-lg mb-8"
         >
           <div className="prose max-w-none">
@@ -59,12 +60,14 @@ Aku cinta kamu ❤️, dan akan selalu mencintaimu 💍.
 
         <div className="flex justify-center">
           <motion.button
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: isIOS ? 1 : 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setShowHeart(!showHeart)}
-            className="bg-pink-500 text-white px-6 py-3 rounded-full shadow-lg"
+            className="relative overflow-hidden bg-pink-500 text-white px-6 py-3 rounded-full shadow-lg"
           >
-            {showHeart ? 'Sembunyikan Cintaku' : 'Lihat Cintaku'}
+            <span className="button-text">
+              {showHeart ? 'Sembunyikan Cintaku' : 'Lihat Cintaku'}
+            </span>
           </motion.button>
         </div>
 

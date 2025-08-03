@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import VidioCount from "../assets/videos/birthday-wish.mp4"
+import VidioCount from "../assets/videos/birthday-wish.mp4";
 
-const BirthdayCountdown = () => {
+const BirthdayCountdown = ({ isIOS }) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -14,7 +14,6 @@ const BirthdayCountdown = () => {
   const [replyMessage, setReplyMessage] = useState("");
   const navigate = useNavigate();
 
-  // Set the target date - August 10, 2025
   const targetDate = new Date("2024-08-10T00:00:00");
 
   useEffect(() => {
@@ -60,7 +59,6 @@ const BirthdayCountdown = () => {
         transition={{ duration: 0.5 }}
         className="text-center max-w-2xl"
       >
-        {/* Your original content remains unchanged */}
         <h1 className="text-4xl md:text-5xl font-bold text-pink-600 mb-8">
           The Birthday of <span className="text-purple-600">Tri Pratiwi</span>
         </h1>
@@ -71,9 +69,11 @@ const BirthdayCountdown = () => {
             loop
             muted
             playsInline
+            webkit-playsinline="true"
+            x-webkit-airplay="allow"
             className="w-full max-w-md mx-auto rounded-lg shadow-xl"
           >
-            <source src={VidioCount} />
+            <source src={VidioCount} type="video/mp4" />
           </video>
         </div>
 
@@ -83,7 +83,7 @@ const BirthdayCountdown = () => {
             {Object.entries(timeLeft).map(([unit, value]) => (
               <motion.div
                 key={unit}
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: isIOS ? 1 : 1.1 }}
                 className="bg-white p-4 rounded-lg shadow-md text-center min-w-[70px]"
               >
                 <div className="text-3xl font-bold text-pink-600">
@@ -106,29 +106,33 @@ const BirthdayCountdown = () => {
           <p className="text-pink-500">Tanggal dimana senyumanmu akan menerangi hariku</p>
         </div>
 
-        {/* Added message buttons */}
         <div className="flex flex-col space-y-4">
           <motion.button
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: isIOS ? 1 : 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setShowReplyForm(true)}
-            className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-full shadow-lg"
+            className="relative overflow-hidden bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-full shadow-lg"
           >
-            💝 Tinggalkan Pesan Mu Sayang
+            <span className="button-text flex items-center justify-center">
+              <span className="mr-2">💝</span>
+              Tinggalkan Pesan Mu Sayang
+            </span>
           </motion.button>
           
           <motion.button
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: isIOS ? 1 : 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate('/reply')}
-            className="bg-white text-pink-600 border border-pink-300 px-6 py-3 rounded-full shadow-lg"
+            className="relative overflow-hidden bg-white text-pink-600 border border-pink-300 px-6 py-3 rounded-full shadow-lg"
           >
-            📩 Lihat Pesan
+            <span className="button-text flex items-center justify-center">
+              <span className="mr-2">📩</span>
+              Lihat Pesan
+            </span>
           </motion.button>
         </div>
       </motion.div>
 
-      {/* Message Form */}
       <AnimatePresence>
         {showReplyForm && (
           <motion.div
@@ -157,7 +161,7 @@ const BirthdayCountdown = () => {
                     type="button"
                     onClick={() => setShowReplyForm(false)}
                     className="px-4 py-2 bg-gray-200 rounded-lg"
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: isIOS ? 1 : 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     Batal
@@ -165,7 +169,7 @@ const BirthdayCountdown = () => {
                   <motion.button
                     type="submit"
                     className="px-4 py-2 bg-pink-500 text-white rounded-lg"
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: isIOS ? 1 : 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     Kirim 💌
