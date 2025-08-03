@@ -72,24 +72,25 @@ const BirthdayCountdown = ({ isIOS }) => {
             webkit-playsinline="true"
             x-webkit-airplay="allow"
             className="w-full max-w-md mx-auto rounded-lg shadow-xl"
+            style={{ transform: 'translateZ(0)' }}
           >
             <source src={VidioCount} type="video/mp4" />
           </video>
         </div>
 
         <div className="mb-12">
-          <h2 className="text-2xl text-pink-500 mb-4">Menuju Hari Spesialmu</h2>
+          <h2 className="text-2xl text-pink-600 mb-4">Menuju Hari Spesialmu</h2>
           <div className="flex justify-center space-x-2 md:space-x-4">
             {Object.entries(timeLeft).map(([unit, value]) => (
               <motion.div
                 key={unit}
                 whileHover={{ scale: isIOS ? 1 : 1.1 }}
-                className="bg-white p-4 rounded-lg shadow-md text-center min-w-[70px]"
+                className="bg-white p-4 rounded-lg shadow-md text-center min-w-[70px] border border-pink-100"
               >
                 <div className="text-3xl font-bold text-pink-600">
                   {value.toString().padStart(2, '0')}
                 </div>
-                <div className="text-sm text-pink-400 uppercase">
+                <div className="text-sm text-pink-500 uppercase">
                   {unit === 'days' ? 'hari' : 
                    unit === 'hours' ? 'jam' : 
                    unit === 'minutes' ? 'menit' : 'detik'}
@@ -99,11 +100,11 @@ const BirthdayCountdown = ({ isIOS }) => {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-lg mb-8">
+        <div className="bg-white p-6 rounded-xl shadow-lg mb-8 border border-pink-100">
           <h3 className="text-xl font-semibold text-purple-600 mb-2">
             📅 10 Agustus 2025
           </h3>
-          <p className="text-pink-500">Tanggal dimana senyumanmu akan menerangi hariku</p>
+          <p className="text-pink-600">Tanggal dimana senyumanmu akan menerangi hariku</p>
         </div>
 
         <div className="flex flex-col space-y-4">
@@ -111,7 +112,8 @@ const BirthdayCountdown = ({ isIOS }) => {
             whileHover={{ scale: isIOS ? 1 : 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setShowReplyForm(true)}
-            className="relative overflow-hidden bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-3 rounded-full shadow-lg"
+            className="relative overflow-hidden bg-gradient-to-r from-pink-600 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg border border-white/30"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             <span className="button-text flex items-center justify-center">
               <span className="mr-2">💝</span>
@@ -123,7 +125,7 @@ const BirthdayCountdown = ({ isIOS }) => {
             whileHover={{ scale: isIOS ? 1 : 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => navigate('/reply')}
-            className="relative overflow-hidden bg-white text-pink-600 border border-pink-300 px-6 py-3 rounded-full shadow-lg"
+            className="relative overflow-hidden bg-white text-pink-600 border-2 border-pink-300 px-6 py-3 rounded-full shadow-lg"
           >
             <span className="button-text flex items-center justify-center">
               <span className="mr-2">📩</span>
@@ -140,18 +142,19 @@ const BirthdayCountdown = ({ isIOS }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+            style={{ WebkitBackfaceVisibility: 'hidden' }}
           >
             <motion.div
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
-              className="bg-white rounded-xl p-6 w-full max-w-md"
+              className="bg-white rounded-xl p-6 w-full max-w-md border border-pink-200"
             >
               <h3 className="text-xl font-bold text-pink-600 mb-4">Pesan Untuk Pacarmu</h3>
               <form onSubmit={handleReplySubmit}>
                 <textarea
                   value={replyMessage}
                   onChange={(e) => setReplyMessage(e.target.value)}
-                  className="w-full p-3 border border-pink-300 rounded-lg mb-4"
+                  className="w-full p-3 border border-pink-300 rounded-lg mb-4 focus:ring-2 focus:ring-pink-300 focus:border-transparent"
                   rows="4"
                   placeholder="Tulis pesan cintamu disini..."
                   required
@@ -168,7 +171,7 @@ const BirthdayCountdown = ({ isIOS }) => {
                   </motion.button>
                   <motion.button
                     type="submit"
-                    className="px-4 py-2 bg-pink-500 text-white rounded-lg"
+                    className="px-4 py-2 bg-pink-600 text-white rounded-lg"
                     whileHover={{ scale: isIOS ? 1 : 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
