@@ -105,50 +105,46 @@ const Memories = ({ isIOS }) => {
             </motion.div>
 
             {/* Realistic Blooming Flower - iPhone Compatible with Original Position */}
-            <motion.div
-              initial={{ y: 200, scale: 0 }}
-              animate={{ y: 0, scale: 1 }}
-              transition={{ duration: 1.5, ease: 'easeOut' }}
-              className="relative w-64 h-64 overflow-visible"
-            >
-              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-48 bg-green-600 rounded-full"></div>
-              
-              {[...Array(5)].map((_, i) => {
-                const angle = (i / 5) * 2 * Math.PI;
-                const x = Math.sin(angle) * 40;
-                const y = Math.cos(angle) * 40;
-                
-                return (
-                  <motion.div
-                    key={i}
-                    className="absolute w-32 h-32 rounded-full"
-                    style={{
-                      top: `${y + 40}px`,
-                      left: `${x + 40}px`,
-                      background: 'radial-gradient(circle at center, #f43f5e, #e11d48)',
-                      zIndex: 1
-                    }}
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.5 + i * 0.2 }}
-                  />
-                );
-              })}
-              
-              <motion.div
-                className="absolute w-14 h-14 bg-yellow-300 rounded-full"
-                style={{
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  border: '4px solid white',
-                  zIndex: 2
-                }}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 1.5 }}
-              />
-            </motion.div>
+{/* Realistic Blooming Flower */}
+<motion.div
+  initial={{ y: 200, scale: 0 }}
+  animate={{ y: 0, scale: 1 }}
+  transition={{ duration: 1.5, ease: 'easeOut' }}
+  className="relative w-64 h-64 overflow-visible"
+>
+  {/* Batang bunga */}
+  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-48 bg-green-600 rounded-full"></div>
+  
+  {/* Kelopak bunga */}
+  {[...Array(5)].map((_, i) => (
+    <motion.div
+      key={i}
+      className="absolute w-32 h-32 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full"
+      style={{
+        top: `${Math.cos((i / 5) * 2 * Math.PI) * 40 + 40}px`,
+        left: `${Math.sin((i / 5) * 2 * Math.PI) * 40 + 40}px`
+      }}
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ delay: 0.5 + i * 0.2 }}
+    />
+  ))}
+  
+  {/* Putik tengah (warna kuning) - POSISI TEPAT DI TENGAH UJUNG BATANG */}
+  <motion.div
+    className="absolute w-14 h-14 bg-yellow-300 rounded-full"
+    style={{
+      top: 'calc(50% - 24px)', // Disesuaikan agar tepat di ujung batang
+      left: '50%',
+      transform: 'translate(-50%, 0)',
+      border: '4px solid white',
+      zIndex: 2
+    }}
+    initial={{ scale: 0 }}
+    animate={{ scale: 1 }}
+    transition={{ delay: 1.5 }}
+  />
+</motion.div>
           </motion.div>
         )}
 
