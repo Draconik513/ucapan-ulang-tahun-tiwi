@@ -38,14 +38,28 @@ const Memories = ({ isIOS }) => {
           </h2>
 
           <div className="text-left text-pink-800 space-y-4 leading-relaxed">
-            <p>💌 <strong>Maaf ya, Sayang...</strong></p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.6 }}>
+            <p>
+              💌 <strong>Maaf ya, Sayang...</strong>
+            </p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            >
               Maaf kalau selama ini aku pernah cuek 😞, terlalu sibuk 😔, atau kurang peka sama perasaanmu 😢. Maaf kalau kadang aku bikin kamu kecewa, salah paham, atau merasa sendiri 😓. Aku gak pernah berniat nyakitin kamu 🥺. Semua itu karena aku manusia biasa yang masih belajar mencintaimu dengan lebih baik 🤍.
             </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.2 }}>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 1.2 }}
+            >
               Terima kasih sudah sabar, sudah tetap di sini 🫶. Aku akan terus belajar jadi lebih baik lagi... untuk kamu 💗
             </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.8 }}>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 1.8 }}
+            >
               🙏🏻 Maaf ya, dan makasih karena kamu tetap percaya sama aku.
             </motion.p>
           </div>
@@ -77,55 +91,59 @@ const Memories = ({ isIOS }) => {
               transition={{ delay: 0.5, type: 'spring', stiffness: 100 }}
               className="rounded-xl overflow-hidden shadow-xl border-4 border-rose-200"
             >
-              <video
-                autoPlay
-                loop
-                muted
+              <video 
+                autoPlay 
+                loop 
+                muted 
                 playsInline
+                webkit-playsinline="true"
+                x-webkit-airplay="allow"
                 className="w-72 h-72 object-cover"
               >
                 <source src={vidioBunga} type="video/mp4" />
               </video>
             </motion.div>
 
-            {/* Realistic Blooming Flower */}
+            {/* Fixed Realistic Blooming Flower - iPhone Compatible */}
             <motion.div
               initial={{ y: 200, scale: 0 }}
               animate={{ y: 0, scale: 1 }}
               transition={{ duration: 1.5, ease: 'easeOut' }}
               className="relative w-64 h-64 overflow-visible"
             >
-              {/* Tangkal */}
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-48 bg-green-600 rounded-full"></div>
-
-              {/* Kelopak Bunga */}
+              
               {[...Array(5)].map((_, i) => {
-                const angle = (i / 5) * 2 * Math.PI
-                const radius = 60
-                const x = Math.sin(angle) * radius
-                const y = Math.cos(angle) * radius
-
+                const angle = (i / 5) * 2 * Math.PI;
+                const x = Math.sin(angle) * 40;
+                const y = Math.cos(angle) * 40;
+                
                 return (
                   <motion.div
                     key={i}
                     className="absolute w-32 h-32 rounded-full"
                     style={{
-                      top: '50%',
-                      left: '50%',
-                      transform: `translate(-50%, -50%) translate(${x}px, ${y}px)`,
+                      top: `calc(50% - 16px + ${y}px)`,
+                      left: `calc(50% - 16px + ${x}px)`,
                       background: 'radial-gradient(circle at center, #f43f5e, #e11d48)',
-                      pointerEvents: 'none',
+                      zIndex: 1
                     }}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.5 + i * 0.2 }}
                   />
-                )
+                );
               })}
-
-              {/* Putik */}
+              
               <motion.div
-                className="absolute w-14 h-14 bg-yellow-300 rounded-full left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 border-4 border-white"
+                className="absolute w-14 h-14 bg-yellow-300 rounded-full"
+                style={{
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  border: '4px solid white',
+                  zIndex: 2
+                }}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 1.5 }}
@@ -139,7 +157,7 @@ const Memories = ({ isIOS }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.2 }}
-            className="text-center text-rose-600 mt-6 italic text-lg"
+            className="text-center text-pink-600 mt-6 italic text-lg"
           >
             🌸 Bunga ini sebagai hadiah dari permintaan maafku, sayang... Tolong diterima ya 🥺❤️
           </motion.p>
