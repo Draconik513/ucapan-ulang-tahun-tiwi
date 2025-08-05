@@ -1,10 +1,10 @@
-import { motion } from "framer-motion";
-import { useState } from "react";
-import vidioBunga from "../assets/videos/vidioBungadudu.mp4";
-import fotoKenangan from "../assets/images/couple.jpg";
+import { motion } from 'framer-motion'
+import { useState } from 'react'
+import vidioBunga from '../assets/videos/vidioBungadudu.mp4'
+import fotoKenangan from '../assets/images/couple.jpg'
 
 const Memories = ({ isIOS }) => {
-  const [flowerBloom, setFlowerBloom] = useState(false);
+  const [flowerBloom, setFlowerBloom] = useState(false)
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-rose-50 p-4 flex flex-col items-center justify-center">
@@ -23,7 +23,7 @@ const Memories = ({ isIOS }) => {
             src={fotoKenangan}
             alt="Kita Berdua"
             className="w-full max-w-md mx-auto rounded-xl shadow-2xl border-4 border-white"
-            style={{ transform: "translateZ(0)" }}
+            style={{ transform: 'translateZ(0)' }}
           />
         </motion.div>
 
@@ -46,19 +46,14 @@ const Memories = ({ isIOS }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              Maaf kalau selama ini aku pernah cuek 😞, terlalu sibuk 😔, atau
-              kurang peka sama perasaanmu 😢. Maaf kalau kadang aku bikin kamu
-              kecewa, salah paham, atau merasa sendiri 😓. Aku gak pernah
-              berniat nyakitin kamu 🥺. Semua itu karena aku manusia biasa yang
-              masih belajar mencintaimu dengan lebih baik 🤍.
+              Maaf kalau selama ini aku pernah cuek 😞, terlalu sibuk 😔, atau kurang peka sama perasaanmu 😢. Maaf kalau kadang aku bikin kamu kecewa, salah paham, atau merasa sendiri 😓. Aku gak pernah berniat nyakitin kamu 🥺. Semua itu karena aku manusia biasa yang masih belajar mencintaimu dengan lebih baik 🤍.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.2 }}
             >
-              Terima kasih sudah sabar, sudah tetap di sini 🫶. Aku akan terus
-              belajar jadi lebih baik lagi... untuk kamu 💗
+              Terima kasih sudah sabar, sudah tetap di sini 🫶. Aku akan terus belajar jadi lebih baik lagi... untuk kamu 💗
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -75,10 +70,10 @@ const Memories = ({ isIOS }) => {
           whileTap={{ scale: 0.95 }}
           onClick={() => setFlowerBloom(!flowerBloom)}
           className="relative overflow-hidden bg-rose-600 text-white px-6 py-3 rounded-full shadow-lg mb-8 border border-white/30"
-          style={{ WebkitTapHighlightColor: "transparent" }}
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <span className="button-text">
-            {flowerBloom ? "Tutup Bunga" : "Buka Bunga Cinta"}
+            {flowerBloom ? 'Tutup Bunga' : 'Buka Bunga Cinta'}
           </span>
         </motion.button>
 
@@ -93,13 +88,13 @@ const Memories = ({ isIOS }) => {
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
+              transition={{ delay: 0.5, type: 'spring', stiffness: 100 }}
               className="rounded-xl overflow-hidden shadow-xl border-4 border-rose-200"
             >
-              <video
-                autoPlay
-                loop
-                muted
+              <video 
+                autoPlay 
+                loop 
+                muted 
                 playsInline
                 webkit-playsinline="true"
                 x-webkit-airplay="allow"
@@ -160,13 +155,12 @@ const Memories = ({ isIOS }) => {
             transition={{ delay: 2.2 }}
             className="text-center text-pink-600 mt-6 italic text-lg"
           >
-            🌸 Bunga ini sebagai hadiah dari permintaan maafku, sayang... Tolong
-            diterima ya 🥺❤️
+            🌸 Bunga ini sebagai hadiah dari permintaan maafku, sayang... Tolong diterima ya 🥺❤️
           </motion.p>
         )}
       </motion.div>
     </div>
-  );
-};
+  )
+}
 
-export default Memories;
+export default Memories
