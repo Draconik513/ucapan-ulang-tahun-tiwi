@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion'
-import { useState } from 'react'
-import vidioBunga from '../assets/videos/vidioBungadudu.mp4'
-import fotoKenangan from '../assets/images/couple.jpg'
+import { motion } from "framer-motion";
+import { useState } from "react";
+import vidioBunga from "../assets/videos/vidioBungadudu.mp4";
+import fotoKenangan from "../assets/images/couple.jpg";
 
 const Memories = ({ isIOS }) => {
-  const [flowerBloom, setFlowerBloom] = useState(false)
+  const [flowerBloom, setFlowerBloom] = useState(false);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-pink-50 to-rose-50 p-4 flex flex-col items-center justify-center">
@@ -23,7 +23,7 @@ const Memories = ({ isIOS }) => {
             src={fotoKenangan}
             alt="Kita Berdua"
             className="w-full max-w-md mx-auto rounded-xl shadow-2xl border-4 border-white"
-            style={{ transform: 'translateZ(0)' }}
+            style={{ transform: "translateZ(0)" }}
           />
         </motion.div>
 
@@ -46,14 +46,19 @@ const Memories = ({ isIOS }) => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
             >
-              Maaf kalau selama ini aku pernah cuek 😞, terlalu sibuk 😔, atau kurang peka sama perasaanmu 😢. Maaf kalau kadang aku bikin kamu kecewa, salah paham, atau merasa sendiri 😓. Aku gak pernah berniat nyakitin kamu 🥺. Semua itu karena aku manusia biasa yang masih belajar mencintaimu dengan lebih baik 🤍.
+              Maaf kalau selama ini aku pernah cuek 😞, terlalu sibuk 😔, atau
+              kurang peka sama perasaanmu 😢. Maaf kalau kadang aku bikin kamu
+              kecewa, salah paham, atau merasa sendiri 😓. Aku gak pernah
+              berniat nyakitin kamu 🥺. Semua itu karena aku manusia biasa yang
+              masih belajar mencintaimu dengan lebih baik 🤍.
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.2 }}
             >
-              Terima kasih sudah sabar, sudah tetap di sini 🫶. Aku akan terus belajar jadi lebih baik lagi... untuk kamu 💗
+              Terima kasih sudah sabar, sudah tetap di sini 🫶. Aku akan terus
+              belajar jadi lebih baik lagi... untuk kamu 💗
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -70,10 +75,10 @@ const Memories = ({ isIOS }) => {
           whileTap={{ scale: 0.95 }}
           onClick={() => setFlowerBloom(!flowerBloom)}
           className="relative overflow-hidden bg-rose-600 text-white px-6 py-3 rounded-full shadow-lg mb-8 border border-white/30"
-          style={{ WebkitTapHighlightColor: 'transparent' }}
+          style={{ WebkitTapHighlightColor: "transparent" }}
         >
           <span className="button-text">
-            {flowerBloom ? 'Tutup Bunga' : 'Buka Bunga Cinta'}
+            {flowerBloom ? "Tutup Bunga" : "Buka Bunga Cinta"}
           </span>
         </motion.button>
 
@@ -88,13 +93,13 @@ const Memories = ({ isIOS }) => {
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              transition={{ delay: 0.5, type: 'spring', stiffness: 100 }}
+              transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
               className="rounded-xl overflow-hidden shadow-xl border-4 border-rose-200"
             >
-              <video 
-                autoPlay 
-                loop 
-                muted 
+              <video
+                autoPlay
+                loop
+                muted
                 playsInline
                 webkit-playsinline="true"
                 x-webkit-airplay="allow"
@@ -105,46 +110,46 @@ const Memories = ({ isIOS }) => {
             </motion.div>
 
             {/* Realistic Blooming Flower - iPhone Compatible with Original Position */}
-{/* Realistic Blooming Flower */}
-<motion.div
-  initial={{ y: 200, scale: 0 }}
-  animate={{ y: 0, scale: 1 }}
-  transition={{ duration: 1.5, ease: 'easeOut' }}
-  className="relative w-64 h-64 overflow-visible"
->
-  {/* Batang bunga */}
-  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-48 bg-green-600 rounded-full"></div>
-  
-  {/* Kelopak bunga */}
-  {[...Array(5)].map((_, i) => (
-    <motion.div
-      key={i}
-      className="absolute w-32 h-32 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full"
-      style={{
-        top: `${Math.cos((i / 5) * 2 * Math.PI) * 40 + 40}px`,
-        left: `${Math.sin((i / 5) * 2 * Math.PI) * 40 + 40}px`
-      }}
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ delay: 0.5 + i * 0.2 }}
-    />
-  ))}
-  
-  {/* Putik tengah (warna kuning) - POSISI TEPAT DI TENGAH UJUNG BATANG */}
-  <motion.div
-    className="absolute w-14 h-14 bg-yellow-300 rounded-full"
-    style={{
-      top: 'calc(50% - 24px)', // Disesuaikan agar tepat di ujung batang
-      left: '50%',
-      transform: 'translate(-50%, 0)',
-      border: '4px solid white',
-      zIndex: 2
-    }}
-    initial={{ scale: 0 }}
-    animate={{ scale: 1 }}
-    transition={{ delay: 1.5 }}
-  />
-</motion.div>
+            {/* Realistic Blooming Flower */}
+            <motion.div
+              initial={{ y: 200, scale: 0 }}
+              animate={{ y: 0, scale: 1 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="relative w-64 h-64 overflow-visible"
+            >
+              {/* Batang bunga */}
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-48 bg-green-600 rounded-full"></div>
+
+              {/* Kelopak bunga */}
+              {[...Array(5)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-32 h-32 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full"
+                  style={{
+                    top: `${Math.cos((i / 5) * 2 * Math.PI) * 40 + 40}px`,
+                    left: `${Math.sin((i / 5) * 2 * Math.PI) * 40 + 40}px`,
+                  }}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.5 + i * 0.2 }}
+                />
+              ))}
+
+              {/* Putik tengah (warna kuning) - POSISI TEPAT DI TENGAH UJUNG BATANG */}
+              <motion.div
+                className="absolute w-14 h-14 bg-yellow-300 rounded-full"
+                style={{
+                  top: "calc(40% - 24px)", // Disesuaikan agar tepat di ujung batang
+                  left: "35%",
+                  transform: "translate(-50%, 0)",
+                  border: "4px solid white",
+                  zIndex: 2,
+                }}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 1.5 }}
+              />
+            </motion.div>
           </motion.div>
         )}
 
@@ -155,12 +160,13 @@ const Memories = ({ isIOS }) => {
             transition={{ delay: 2.2 }}
             className="text-center text-pink-600 mt-6 italic text-lg"
           >
-            🌸 Bunga ini sebagai hadiah dari permintaan maafku, sayang... Tolong diterima ya 🥺❤️
+            🌸 Bunga ini sebagai hadiah dari permintaan maafku, sayang... Tolong
+            diterima ya 🥺❤️
           </motion.p>
         )}
       </motion.div>
     </div>
-  )
-}
+  );
+};
 
-export default Memories
+export default Memories;
