@@ -104,7 +104,7 @@ const Memories = ({ isIOS }) => {
               </video>
             </motion.div>
 
-            {/* Fixed Realistic Blooming Flower - iPhone Compatible */}
+            {/* Realistic Blooming Flower - iPhone Compatible with Original Position */}
             <motion.div
               initial={{ y: 200, scale: 0 }}
               animate={{ y: 0, scale: 1 }}
@@ -123,8 +123,8 @@ const Memories = ({ isIOS }) => {
                     key={i}
                     className="absolute w-32 h-32 rounded-full"
                     style={{
-                      top: `calc(50% - 16px + ${y}px)`,
-                      left: `calc(50% - 16px + ${x}px)`,
+                      top: `${y + 40}px`,
+                      left: `${x + 40}px`,
                       background: 'radial-gradient(circle at center, #f43f5e, #e11d48)',
                       zIndex: 1
                     }}
