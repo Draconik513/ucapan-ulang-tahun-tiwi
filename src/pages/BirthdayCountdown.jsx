@@ -112,8 +112,8 @@ const BirthdayCountdown = ({ isIOS }) => {
             whileHover={{ scale: isIOS ? 1 : 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setShowReplyForm(true)}
-            className="relative overflow-hidden bg-gradient-to-r from-pink-600 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg border border-white/30"
-            style={{ WebkitTapHighlightColor: 'transparent' }}
+            className="relative overflow-hidden bg-pink-500 text-white px-6 py-3 rounded-full shadow-lg"
+
           >
             <span className="button-text flex items-center justify-center">
               <span className="mr-2">💝</span>

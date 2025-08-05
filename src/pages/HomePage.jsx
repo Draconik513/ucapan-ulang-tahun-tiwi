@@ -84,11 +84,9 @@ const HomePage = ({ isIOS }) => {
             whileHover={{ scale: isIOS ? 1 : 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => navigate("/gift")}
-            className="relative overflow-hidden bg-gradient-to-r from-pink-600 to-purple-700 text-white px-8 py-4 rounded-full shadow-lg text-xl font-bold border-2 border-white/50"
-            style={{ 
-              WebkitTapHighlightColor: 'transparent',
-              WebkitBackfaceVisibility: 'hidden'
-            }}
+
+            className="relative overflow-hidden bg-pink-500 text-white px-8 py-4 rounded-full shadow-lg text-xl font-bold"
+
           >
             <span className="button-text flex items-center">
               <span className="mr-2">🎁</span>

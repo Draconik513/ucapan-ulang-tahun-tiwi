@@ -124,7 +124,7 @@ const Memories = ({ isIOS }) => {
               {[...Array(5)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="absolute w-32 h-32 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full"
+                  className="absolute w-32 h-32 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full"
                   style={{
                     top: `${Math.cos((i / 5) * 2 * Math.PI) * 40 + 40}px`,
                     left: `${Math.sin((i / 5) * 2 * Math.PI) * 40 + 40}px`,
@@ -157,7 +157,7 @@ const Memories = ({ isIOS }) => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2.2 }}
-            className="text-center text-rose-600 mt-6 italic text-lg"
+            className="text-center text-pink-600 mt-6 italic text-lg"
           >
             🌸 Bunga ini sebagai hadiah dari permintaan maafku, sayang... Tolong diterima ya 🥺❤️
           </motion.p>
