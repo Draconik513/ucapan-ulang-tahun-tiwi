@@ -80,7 +80,7 @@ function App() {
     
     // Check if countdown is finished
     const checkCountdown = () => {
-      const targetDate = new Date('2024-08-10T00:00:00')
+      const targetDate = new Date('2025-08-9T00:00:00')
       const now = new Date()
       if (now >= targetDate) {
         setCountdownFinished(true)
